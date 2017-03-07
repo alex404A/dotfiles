@@ -18,6 +18,7 @@ Plugin 'mxw/vim-jsx'
 Plugin 'posva/vim-vue'
 Plugin 'isRuslan/vim-es6'
 Plugin 'heavenshell/vim-jsdoc'
+Plugin 'powerline/powerline'
 
 syntax enable
 filetype plugin indent on
@@ -33,6 +34,7 @@ set expandtab
 set number
 set nofoldenable
 set noswapfile
+set clipboard=unnamed
 
 
 colorscheme monokai
