@@ -18,7 +18,7 @@ Plugin 'mxw/vim-jsx'
 Plugin 'posva/vim-vue'
 Plugin 'isRuslan/vim-es6'
 Plugin 'heavenshell/vim-jsdoc'
-Plugin 'powerline/powerline'
+Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 
 syntax enable
 filetype plugin indent on
@@ -36,6 +36,11 @@ set nofoldenable
 set noswapfile
 set clipboard=unnamed
 
+set guifont=Inconsolata\ for\ Powerline:h15
+let g:Powerline_symbols = 'fancy'
+set t_Co=256
+set fillchars+=stl:\ ,stlnc:\
+set term=xterm-256color
 
 colorscheme monokai
 
