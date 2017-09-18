@@ -25,6 +25,7 @@ filetype plugin indent on
 
 map <F7> :NERDTreeToggle<CR>   
 nnoremap <silent> <F8> :TlistToggle<CR>
+vnoremap <C-c> "*y
 
 set hlsearch
 set autoindent
@@ -41,9 +42,14 @@ let g:Powerline_symbols = 'fancy'
 set t_Co=256
 set fillchars+=stl:\ ,stlnc:\
 set term=xterm-256color
+let g:javascript_plugin_flow = 1
 
 colorscheme monokai
 
 if has('mouse')
-    set mouse=a
+  set mouse=a
+endif
+
+if $TMUX == ''
+  set clipboard+=unnamed
 endif
