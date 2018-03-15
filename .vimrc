@@ -26,6 +26,9 @@ filetype plugin indent on
 map <F7> :NERDTreeToggle<CR>   
 nnoremap <silent> <F8> :TlistToggle<CR>
 vnoremap <C-c> "*y
+map <F2> :s/^\d/2<CR>   
+map <F3> :s/^\d/3<CR>   
+map <F4> :s/^\d/1<CR>   
 
 set hlsearch
 set autoindent

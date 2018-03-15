@@ -117,6 +117,7 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+export SHELL=/usr/bin/zsh
 export HADOOP_HOME=/usr/local/hadoop
 export HADOOP_MAPRED_HOME=$HADOOP_HOME
 export HADOOP_COMMON_HOME=$HADOOP_HOME
@@ -126,6 +127,8 @@ export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native
 export PATH=$PATH:$HADOOP_HOME/sbin:$HADOOP_HOME/bin
 export HADOOP_INSTALL=$HADOOP_HOME
 export MAVEN_HOME=/usr/local/apache-maven-3.3.9
+export JAVA_HOME=/usr/lib/jvm/jdk1.8.0_131
+bash -c zsh
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
