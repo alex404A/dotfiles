@@ -26,6 +26,9 @@ if [ ! -f "$ANTIGEN" ]; then
 	mv "$TMPFILE" "$ANTIGEN"
 fi
 
+if [ $commands[kubectl] ]; then
+  source <(kubectl completion zsh)
+fi
 
 # Initialize command prompt
 export PS1="%n@%m:%~%# "
@@ -149,7 +152,11 @@ bindkey '\ev' deer
 
 alias ll='ls -l'
 alias v='vim'
-
+alias kubectltest='kubectl --kubeconfig=/home/sixestates/.kube/testkube-config'
+alias kubectlnus='kubectl --kubeconfig=/home/sixestates/.kube/nus-kube-config'
+alias kubectlaliyun='kubectl --kubeconfig=/home/sixestates/.kube/aliyun-kube-config'
+alias kubectllinode='kubectl --kubeconfig=/home/sixestates/.kube/linode-kube-config'
+alias vscode='code'
 
 # source function.sh if it exists
 [ -f "$HOME/.local/etc/function.sh" ] && . "$HOME/.local/etc/function.sh"
@@ -158,5 +165,56 @@ alias v='vim'
 # ignore complition
 zstyle ':completion:*:complete:-command-:*:*' ignored-patterns '*.pdf|*.exe|*.dll'
 
-export NVM_AUTO_USE=true
+# place this after nvm initialization!
+autoload -U add-zsh-hook
+load-nvmrc() {
+  local node_version="$(nvm version)"
+  local nvmrc_path="$(nvm_find_nvmrc)"
 
+  if [ -n "$nvmrc_path" ]; then
+    local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
+
+    if [ "$nvmrc_node_version" = "N/A" ]; then
+      nvm install
+    elif [ "$nvmrc_node_version" != "$node_version" ]; then
+      nvm use
+    fi
+  elif [ "$node_version" != "$(nvm version default)" ]; then
+    echo "Reverting to nvm default version"
+    nvm use default
+  fi
+}
+add-zsh-hook chpwd load-nvmrc
+load-nvmrc
+
+autoload -Uz vcs_info
+precmd() { vcs_info }
+
+# Format the vcs_info_msg_0_ variable
+zstyle ':vcs_info:git:*' formats 'on branch %b'
+
+# Set up the prompt (with git branch name)
+setopt PROMPT_SUBST
+PROMPT='%n in ${PWD/#$HOME/~} ${vcs_info_msg_0_} > '
+
+# export NVM_AUTO_USE=true
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/home/sixestates/.sdkman"
+[[ -s "/home/sixestates/.sdkman/bin/sdkman-init.sh" ]] && source "/home/sixestates/.sdkman/bin/sdkman-init.sh"
+# >>> conda init >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$(CONDA_REPORT_ERRORS=false '/home/sixestates/anaconda2/bin/conda' shell.bash hook 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    \eval "$__conda_setup"
+else
+    if [ -f "/home/sixestates/anaconda2/etc/profile.d/conda.sh" ]; then
+        . "/home/sixestates/anaconda2/etc/profile.d/conda.sh"
+        CONDA_CHANGEPS1=false conda activate base
+    else
+        \export PATH="/home/sixestates/anaconda2/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda init <<<
+conda activate

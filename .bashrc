@@ -93,6 +93,11 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 alias v='vim'
+alias kubectltest='kubectl --kubeconfig=/home/sixestates/.kube/testkube-config'
+alias kubectlnus='kubectl --kubeconfig=/home/sixestates/.kube/nus-kube-config'
+alias kubectlaliyun='kubectl1.8 --kubeconfig=/home/sixestates/.kube/aliyun-kube-config'
+alias kubectllinode='kubectl --kubeconfig=/home/sixestates/.kube/linode-kube-config'
+# alias chrome='google-chrome-stable'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -118,18 +123,83 @@ if ! shopt -oq posix; then
   fi
 fi
 export SHELL=/usr/bin/zsh
-export HADOOP_HOME=/usr/local/hadoop
-export HADOOP_MAPRED_HOME=$HADOOP_HOME
-export HADOOP_COMMON_HOME=$HADOOP_HOME
-export HADOOP_HDFS_HOME=$HADOOP_HOME
 export YARN_HOME=$HADOOP_HOME
-export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native
-export PATH=$PATH:$HADOOP_HOME/sbin:$HADOOP_HOME/bin
-export HADOOP_INSTALL=$HADOOP_HOME
-export MAVEN_HOME=/usr/local/apache-maven-3.3.9
-export JAVA_HOME=/usr/lib/jvm/jdk1.8.0_131
+export ANDROID_HOME=/usr/lib/Android/Sdk
 bash -c zsh
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Path to the bash it configuration
+export BASH_IT="/home/sixestates/.bash_it"
+
+# Lock and Load a custom theme file
+# location /.bash_it/themes/
+export BASH_IT_THEME='bobby'
+
+# (Advanced): Change this to the name of your remote repo if you
+# cloned bash-it with a remote other than origin such as `bash-it`.
+# export BASH_IT_REMOTE='bash-it'
+
+# Your place for hosting Git repos. I use this for private repos.
+export GIT_HOSTING='git@git.domain.com'
+
+# Don't check mail when opening terminal.
+unset MAILCHECK
+
+# Change this to your console based IRC client of choice.
+export IRC_CLIENT='irssi'
+
+# Set this to the command you use for todo.txt-cli
+export TODO="t"
+
+# Set this to false to turn off version control status checking within the prompt for all themes
+export SCM_CHECK=true
+
+# Set Xterm/screen/Tmux title with only a short hostname.
+# Uncomment this (or set SHORT_HOSTNAME to something else),
+# Will otherwise fall back on $HOSTNAME.
+#export SHORT_HOSTNAME=$(hostname -s)
+
+# Set Xterm/screen/Tmux title with only a short username.
+# Uncomment this (or set SHORT_USER to something else),
+# Will otherwise fall back on $USER.
+#export SHORT_USER=${USER:0:8}
+
+# Set Xterm/screen/Tmux title with shortened command and directory.
+# Uncomment this to set.
+#export SHORT_TERM_LINE=true
+
+# Set vcprompt executable path for scm advance info in prompt (demula theme)
+# https://github.com/djl/vcprompt
+#export VCPROMPT_EXECUTABLE=~/.vcprompt/bin/vcprompt
+
+# (Advanced): Uncomment this to make Bash-it reload itself automatically
+# after enabling or disabling aliases, plugins, and completions.
+# export BASH_IT_AUTOMATIC_RELOAD_AFTER_CONFIG_CHANGE=1
+
+# Load Bash It
+source "$BASH_IT"/bash_it.sh
+export BASH_IT_THEME='bakke'
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/home/sixestates/.sdkman"
+[[ -s "/home/sixestates/.sdkman/bin/sdkman-init.sh" ]] && source "/home/sixestates/.sdkman/bin/sdkman-init.sh"
+# added by Anaconda2 2018.12 installer
+# >>> conda init >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$(CONDA_REPORT_ERRORS=false '/home/sixestates/anaconda2/bin/conda' shell.bash hook 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    \eval "$__conda_setup"
+else
+    if [ -f "/home/sixestates/anaconda2/etc/profile.d/conda.sh" ]; then
+        . "/home/sixestates/anaconda2/etc/profile.d/conda.sh"
+        CONDA_CHANGEPS1=false conda activate base
+    else
+        \export PATH="/home/sixestates/anaconda2/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda init <<<
+conda activate
