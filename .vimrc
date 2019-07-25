@@ -20,6 +20,7 @@ Plugin 'isRuslan/vim-es6'
 Plugin 'heavenshell/vim-jsdoc'
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'JamshedVesuna/vim-markdown-preview'
+Plugin 'leafgarland/typescript-vim'
 
 syntax enable
 filetype plugin indent on
