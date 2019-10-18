@@ -156,6 +156,7 @@ alias kubectltest='kubectl --kubeconfig=/home/sixestates/.kube/testkube-config'
 alias kubectlnus='kubectl --kubeconfig=/home/sixestates/.kube/nus-kube-config'
 alias kubectlaliyun='kubectl --kubeconfig=/home/sixestates/.kube/ali-kubeconfig'
 alias kubectllinode='kubectl --kubeconfig=/home/sixestates/.kube/linode-kube-config'
+alias kubectllc='kubectl --kubeconfig=/home/sixestates/.kube/lc-kubeconfig'
 alias vscode='code'
 alias sshali='ssh -i /home/sixestates/.ssh/alikube_rsa'
 alias sshsm='ssh -i /home/sixestates/.ssh/smkube_rsa'
@@ -228,8 +229,29 @@ export SDKMAN_DIR="/home/sixestates/.sdkman"
 # conda activate
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
-fi
+# export PYENV_ROOT="$HOME/.pyenv"
+# export PATH="$PYENV_ROOT/bin:$PATH"
+# if command -v pyenv 1>/dev/null 2>&1; then
+#   eval "$(pyenv init -)"
+# fi
+
+autoload -U add-zsh-hook
+load-nvmrc() {
+  local node_version="$(nvm version)"
+  local nvmrc_path="$(nvm_find_nvmrc)"
+
+  if [ -n "$nvmrc_path" ]; then
+    local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
+
+    if [ "$nvmrc_node_version" = "N/A" ]; then
+      nvm install
+    elif [ "$nvmrc_node_version" != "$node_version" ]; then
+      nvm use
+    fi
+  elif [ "$node_version" != "$(nvm version default)" ]; then
+    echo "Reverting to nvm default version"
+    nvm use default
+  fi
+}
+add-zsh-hook chpwd load-nvmrc
+load-nvmrc

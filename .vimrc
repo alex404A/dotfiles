@@ -21,6 +21,7 @@ Plugin 'heavenshell/vim-jsdoc'
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'JamshedVesuna/vim-markdown-preview'
 Plugin 'leafgarland/typescript-vim'
+Plugin 'zxqfl/tabnine-vim'
 
 syntax enable
 filetype plugin indent on
