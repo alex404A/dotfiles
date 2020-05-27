@@ -6,7 +6,6 @@ call vundle#rc()
 Plugin 'gmarik/vundle'
 Plugin 'scrooloose/nerdtree.git'
 Plugin 'davidhalter/jedi-vim'
-Plugin 'taglist.vim'
 Plugin 'highlight.vim'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'mattn/emmet-vim'
@@ -27,11 +26,12 @@ syntax enable
 filetype plugin indent on
 
 map <F7> :NERDTreeToggle<CR>   
-nnoremap <silent> <F8> :TlistToggle<CR>
-vnoremap <C-c> "*y
+noremap <silent> <F8> :TlistToggle<CR>
 map <F2> :s/^\d/2<CR>   
 map <F3> :s/^\d/3<CR>   
 map <F4> :s/^\d/1<CR>   
+vnoremap <C-c> "*y :let @+=@*<CR>
+map<C-p> "+P
 
 set hlsearch
 set autoindent

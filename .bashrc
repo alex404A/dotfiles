@@ -93,10 +93,15 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 alias v='vim'
-alias kubectltest='kubectl --kubeconfig=/home/sixestates/.kube/testkube-config'
-alias kubectlnus='kubectl --kubeconfig=/home/sixestates/.kube/nus-kube-config'
-alias kubectlaliyun='kubectl1.8 --kubeconfig=/home/sixestates/.kube/ali-kubeconfig'
-alias kubectllinode='kubectl --kubeconfig=/home/sixestates/.kube/linode-kube-config'
+alias ktest='kubectl --kubeconfig=/home/alex/.kube/testkube-config'
+alias knus='kubectl --kubeconfig=/home/alex/.kube/nus-kube-config'
+alias kaliyun='kubectl --kubeconfig=/home/alex/.kube/ali-kubeconfig'
+alias klinode='kubectl --kubeconfig=/home/alex/.kube/linode-kube-config'
+alias klc='kubectl --kubeconfig=/home/alex/.kube/lc-kubeconfig'
+alias kdev='kubectl --kubeconfig=/home/alex/.kube/dev-kubeconfig-outer'
+alias konp='kubectl --kubeconfig=/home/alex/.kube/onp-kubeconfig-outer'
+alias kth='kubectl --kubeconfig=/home/alex/.kube/tsinghua-kubeconfig'
+alias vscode='code'
 # alias chrome='google-chrome-stable'
 
 # Add an "alert" alias for long running commands.  Use like so:
@@ -132,7 +137,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Path to the bash it configuration
-export BASH_IT="/home/sixestates/.bash_it"
+export BASH_IT="/home/alex/.bash_it"
 
 # Lock and Load a custom theme file
 # location /.bash_it/themes/
@@ -184,20 +189,20 @@ source "$BASH_IT"/bash_it.sh
 export BASH_IT_THEME='bakke'
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/home/sixestates/.sdkman"
-[[ -s "/home/sixestates/.sdkman/bin/sdkman-init.sh" ]] && source "/home/sixestates/.sdkman/bin/sdkman-init.sh"
+export SDKMAN_DIR="/home/alex/.sdkman"
+[[ -s "/home/alex/.sdkman/bin/sdkman-init.sh" ]] && source "/home/alex/.sdkman/bin/sdkman-init.sh"
 # added by Anaconda2 2018.12 installer
 # >>> conda init >>>
 # !! Contents within this block are managed by 'conda init' !!
-# __conda_setup="$(CONDA_REPORT_ERRORS=false '/home/sixestates/anaconda2/bin/conda' shell.bash hook 2> /dev/null)"
+# __conda_setup="$(CONDA_REPORT_ERRORS=false '/home/alex/anaconda2/bin/conda' shell.bash hook 2> /dev/null)"
 # if [ $? -eq 0 ]; then
 #     \eval "$__conda_setup"
 # else
-#     if [ -f "/home/sixestates/anaconda2/etc/profile.d/conda.sh" ]; then
-#         . "/home/sixestates/anaconda2/etc/profile.d/conda.sh"
+#     if [ -f "/home/alex/anaconda2/etc/profile.d/conda.sh" ]; then
+#         . "/home/alex/anaconda2/etc/profile.d/conda.sh"
 #         CONDA_CHANGEPS1=false conda activate base
 #     else
-#         \export PATH="/home/sixestates/anaconda2/bin:$PATH"
+#         \export PATH="/home/alex/anaconda2/bin:$PATH"
 #     fi
 # fi
 # unset __conda_setup

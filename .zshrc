@@ -152,20 +152,23 @@ bindkey '\ev' deer
 
 alias ll='ls -l'
 alias v='vim'
-alias kubectltest='kubectl --kubeconfig=/home/sixestates/.kube/testkube-config'
-alias kubectlnus='kubectl --kubeconfig=/home/sixestates/.kube/nus-kube-config'
-alias kubectlaliyun='kubectl --kubeconfig=/home/sixestates/.kube/ali-kubeconfig'
-alias kubectllinode='kubectl --kubeconfig=/home/sixestates/.kube/linode-kube-config'
-alias kubectllc='kubectl --kubeconfig=/home/sixestates/.kube/lc-kubeconfig'
-alias kubectldev='kubectl --kubeconfig=/home/sixestates/.kube/dev-kubeconfig'
-alias kubectlbj='kubectl --kubeconfig=/home/sixestates/.kube/bj-kube-config'
+alias ktest='kubectl --kubeconfig=/home/alex/.kube/testkube-config'
+alias knus='kubectl --kubeconfig=/home/alex/.kube/nus-kube-config'
+alias kaliyun='kubectl --kubeconfig=/home/alex/.kube/ali-kubeconfig'
+alias klinode='kubectl --kubeconfig=/home/alex/.kube/linode-kube-config'
+alias klc='kubectl --kubeconfig=/home/alex/.kube/lc-kubeconfig'
+alias kdev='kubectl --kubeconfig=/home/alex/.kube/dev-kubeconfig-outer'
+alias konp='kubectl --kubeconfig=/home/alex/.kube/onp-kubeconfig-outer'
+alias kth='kubectl --kubeconfig=/home/alex/.kube/tsinghua-kubeconfig'
 alias vscode='code'
-alias sshali='ssh -i /home/sixestates/.ssh/alikube_rsa'
-alias sshsm='ssh -i /home/sixestates/.ssh/smkube_rsa'
-alias sshtest='ssh -i /home/sixestates/.ssh/testkube_rsa'
+alias sshali='ssh -i /home/alex/.ssh/alikube_rsa'
+alias sshsm='ssh -i /home/alex/.ssh/smkube_rsa'
+alias sshtest='ssh -i /home/alex/.ssh/testkube_rsa'
 alias cat='bat'
 alias ping='prettyping --nolegend'
 alias top='htop'
+alias gt='git status'
+alias gc='git commit -m'
 
 
 # source function.sh if it exists
@@ -207,23 +210,24 @@ zstyle ':vcs_info:git:*' formats 'on branch %b'
 setopt PROMPT_SUBST
 PROMPT='%n in ${PWD/#$HOME/~} ${vcs_info_msg_0_} > '
 
+export JAVA_HOME=/home/alex/lib/jdk/jdk-11.0.6
 export GOPATH=$HOME/go
 # export NVM_AUTO_USE=true
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/home/sixestates/.sdkman"
-[[ -s "/home/sixestates/.sdkman/bin/sdkman-init.sh" ]] && source "/home/sixestates/.sdkman/bin/sdkman-init.sh"
+export SDKMAN_DIR="/home/alex/.sdkman"
+[[ -s "/home/alex/.sdkman/bin/sdkman-init.sh" ]] && source "/home/alex/.sdkman/bin/sdkman-init.sh"
 # >>> conda init >>>
 # !! Contents within this block are managed by 'conda init' !!
-# __conda_setup="$(CONDA_REPORT_ERRORS=false '/home/sixestates/anaconda2/bin/conda' shell.bash hook 2> /dev/null)"
+# __conda_setup="$(CONDA_REPORT_ERRORS=false '/home/alex/anaconda2/bin/conda' shell.bash hook 2> /dev/null)"
 # if [ $? -eq 0 ]; then
 #     \eval "$__conda_setup"
 # else
-#     if [ -f "/home/sixestates/anaconda2/etc/profile.d/conda.sh" ]; then
-#         . "/home/sixestates/anaconda2/etc/profile.d/conda.sh"
+#     if [ -f "/home/alex/anaconda2/etc/profile.d/conda.sh" ]; then
+#         . "/home/alex/anaconda2/etc/profile.d/conda.sh"
 #         CONDA_CHANGEPS1=false conda activate base
 #     else
-#         \export PATH="/home/sixestates/anaconda2/bin:$PATH"
+#         \export PATH="/home/alex/anaconda2/bin:$PATH"
 #     fi
 # fi
 # unset __conda_setup
@@ -257,3 +261,5 @@ load-nvmrc() {
 }
 add-zsh-hook chpwd load-nvmrc
 load-nvmrc
+
+eval "$(direnv hook $SHELL)"
