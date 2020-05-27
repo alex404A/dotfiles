@@ -17,7 +17,6 @@ Plugin 'mxw/vim-jsx'
 Plugin 'posva/vim-vue'
 Plugin 'isRuslan/vim-es6'
 Plugin 'heavenshell/vim-jsdoc'
-Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'JamshedVesuna/vim-markdown-preview'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'zxqfl/tabnine-vim'
