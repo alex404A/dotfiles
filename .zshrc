@@ -35,6 +35,7 @@ export PS1="%n@%m:%~%# "
 
 # Enable 256 color to make auto-suggestions look nice
 export TERM="xterm-256color"
+export PATH="$PATH:$HOME/bin"
 
 
 # Load local bash/zsh compatible settings
@@ -165,7 +166,6 @@ alias sshali='ssh -i /home/alex/.ssh/alikube_rsa'
 alias sshsm='ssh -i /home/alex/.ssh/smkube_rsa'
 alias sshtest='ssh -i /home/alex/.ssh/testkube_rsa'
 alias cat='bat'
-alias ping='prettyping --nolegend'
 alias top='htop'
 alias gt='git status'
 alias gc='git commit -m'
@@ -210,7 +210,6 @@ zstyle ':vcs_info:git:*' formats 'on branch %b'
 setopt PROMPT_SUBST
 PROMPT='%n in ${PWD/#$HOME/~} ${vcs_info_msg_0_} > '
 
-export JAVA_HOME=/home/alex/lib/jdk/jdk-11.0.6
 export GOPATH=$HOME/go
 # export NVM_AUTO_USE=true
 
@@ -263,3 +262,7 @@ add-zsh-hook chpwd load-nvmrc
 load-nvmrc
 
 eval "$(direnv hook $SHELL)"
+export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/sbin:$PATH"
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-11.0.7.jdk/Contents/Home
+export GOPROXY=https://goproxy.io
