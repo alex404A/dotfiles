@@ -234,6 +234,9 @@ export SDKMAN_DIR="/home/alex/.sdkman"
 # conda activate
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_OPS="--extend"
+export FZF_DEFAULT_COMMAND="fd --type f"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 # export PYENV_ROOT="$HOME/.pyenv"
 # export PATH="$PYENV_ROOT/bin:$PATH"
 # if command -v pyenv 1>/dev/null 2>&1; then
@@ -260,6 +263,9 @@ load-nvmrc() {
 }
 add-zsh-hook chpwd load-nvmrc
 load-nvmrc
+
+# scripts
+ov() {du -a . | awk '{print $2}' | fzf | xargs -o vim;}
 
 eval "$(direnv hook $SHELL)"
 export PATH="/usr/local/bin:$PATH"
