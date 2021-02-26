@@ -128,10 +128,10 @@ nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 " GoTo code navigation.
-nmap <silent> md <Plug>(coc-definition)
-nmap <silent> my <Plug>(coc-type-definition)
-nmap <silent> mi <Plug>(coc-implementation)
-nmap <silent> mr <Plug>(coc-references)
+nmap <silent> <leader>d <Plug>(coc-definition)
+nmap <silent> <leader>y <Plug>(coc-type-definition)
+nmap <silent> <leader>i <Plug>(coc-implementation)
+nmap <silent> <leader>r <Plug>(coc-references)
 
 " Use K to show documentation in preview window.
 nnoremap <silent> mk :call <SID>show_documentation()<CR>
