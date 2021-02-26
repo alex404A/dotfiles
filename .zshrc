@@ -52,7 +52,6 @@ _INIT_SH_NOFUN=1
 # Initialize antigen
 source "$ANTIGEN"
 
-
 # Initialize oh-my-zsh
 antigen use oh-my-zsh
 
@@ -266,6 +265,8 @@ load-nvmrc
 
 # scripts
 ov() {du -a . | awk '{print $2}' | fzf | xargs -o vim;}
+fzfpr() {fzf --preview 'bat --style=numbers --color=always --line-range :500 {}'}
+copy() {cat $1 | clipcopy;}
 
 eval "$(direnv hook $SHELL)"
 export PATH="/usr/local/bin:$PATH"

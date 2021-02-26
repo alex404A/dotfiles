@@ -22,6 +22,8 @@ Plugin 'JamshedVesuna/vim-markdown-preview'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'neoclide/coc.nvim', {'branch': 'release'}
 Plugin 'pseewald/vim-anyfold'
+Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plugin 'junegunn/fzf.vim'
 
 syntax on
 filetype plugin indent on
@@ -155,7 +157,7 @@ nmap <leader>f  <Plug>(coc-format-selected)
 augroup mygroup
   autocmd!
   " Setup formatexpr specified filetype(s).
-  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  autocmd FileType javascript,typescript,json setl formatexpr=CocAction('formatSelected')
   " Update signature help on jump placeholder.
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
@@ -226,3 +228,19 @@ autocmd Filetype * AnyFoldActivate               " activate for all filetypes
 set foldlevel=0 " Open all folds
 
 set foldmethod=syntax
+
+function! GotoJump()
+  jumps
+  let j = input("Please select your jump: ")
+  if j != ''
+    let pattern = '\v\c^\+'
+    if j =~ pattern
+      let j = substitute(j, pattern, '', 'g')
+      execute "normal " . j . "\<c-i>"
+    else
+      execute "normal " . j . "\<c-o>"
+    endif
+  endif
+endfunction
+
+nmap <Leader>j :call GotoJump()<CR>
